@@ -4,18 +4,24 @@ services:
         image: mysql:5.7
         container_name: easyappointments-database
         volumes:
-            - ./mysql:/var/lib/mysql
+            - ./data/mysql:/var/lib/mysql
         environment:
-            - MYSQL_ROOT_PASSWORD=root
             - MYSQL_DATABASE=easyappointments
+            - MYSQL_RANDOM_ROOT_PASSWORD=yes
+            - MYSQL_USER=easyappointments
+            - MYSQL_PASSWORD=aVerySecretToChange
         ports:
             - "8001:3306"
     server:
         build: ./server
-        image: easyappointments-server:v1
+        image: nowadate/easyappointments-server:v1.5
         container_name: easyappointments-server
+        depends_on: 
+            - mysql
         ports:
             - "8000:80"
         volumes:
             - ../:/var/www/html
             - ./server/php.ini:/usr/local/etc/php/conf.d/99-overrides.ini
+            - ./server/config-sample.php:/var/www/html/config.php
+
