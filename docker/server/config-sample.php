@@ -30,7 +30,7 @@ class Config {
     // GENERAL SETTINGS
     // ------------------------------------------------------------------------
 
-    const BASE_URL      = 'http://localhost:8000/';
+    const BASE_URL      = 'http://localhost:8000';
     const LANGUAGE      = 'english';
     const DEBUG_MODE    = FALSE;
 

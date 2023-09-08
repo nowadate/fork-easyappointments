@@ -4,7 +4,7 @@ services:
         image: mysql:5.7
         container_name: easyappointments-database
         volumes:
-            - ./data/mysql:/var/lib/mysql
+            - mysql_data:/var/lib/mysql
         environment:
             - MYSQL_DATABASE=easyappointments
             - MYSQL_RANDOM_ROOT_PASSWORD=yes
@@ -21,7 +21,9 @@ services:
         ports:
             - "8000:80"
         volumes:
-            - ../:/var/www/html
+            - ../build:/var/www/html
             - ./server/php.ini:/usr/local/etc/php/conf.d/99-overrides.ini
             - ./server/config-sample.php:/var/www/html/config.php
 
+volumes:
+  mysql_data:
