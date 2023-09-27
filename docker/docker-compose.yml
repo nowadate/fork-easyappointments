@@ -7,9 +7,9 @@ services:
             - mysql_data:/var/lib/mysql
         environment:
             - MYSQL_DATABASE=easyappointments
-            - MYSQL_RANDOM_ROOT_PASSWORD=yes
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-aVerySecretToChange}
             - MYSQL_USER=easyappointments
-            - MYSQL_PASSWORD=aVerySecretToChange
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD:-aVerySecretToChange}
         ports:
             - "8001:3306"
     server:
