@@ -2,6 +2,8 @@
 /**
  * Local variables.
  * 
+ * @var string $display_citizen_id
+ * @var string $require_citizen_id
  * @var string $display_first_name
  * @var string $require_first_name
  * @var string $display_last_name
@@ -28,6 +30,19 @@
 
         <div class="row frame-content">
             <div class="col-12 col-md-6 field-col mx-auto">
+                <?php if ($display_citizen_id): ?>
+                    <div class="mb-3">
+                        <label for="citizen-id" class="form-label">
+                            <?= lang('citizen_id') ?>
+                            <?php if ($require_citizen_id): ?>
+                                <span class="text-danger">*</span>
+                            <?php endif ?>
+                        </label>
+                        <input type="text" id="citizen-id"
+                               class="<?= $require_citizen_id ? 'required' : '' ?> form-control" maxlength="100"/>
+                    </div>
+                <?php endif ?>
+                
                 <?php if ($display_first_name): ?>
                     <div class="mb-3">
                         <label for="first-name" class="form-label">

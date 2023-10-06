@@ -21,6 +21,8 @@
 <!-- Enter Customer Information -->
 
 <?php component('booking_info_step', [
+    'display_citizen_id' => vars('display_citizen_id'),
+    'require_citizen_id' => vars('require_citizen_id'),
     'display_first_name' => vars('display_first_name'),
     'require_first_name' => vars('require_first_name'),
     'display_last_name' => vars('display_last_name'),

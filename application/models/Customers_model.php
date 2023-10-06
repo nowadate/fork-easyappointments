@@ -32,6 +32,7 @@ class Customers_model extends EA_Model {
      */
     protected array $api_resource = [
         'id' => 'id',
+        'citizenId' => 'citizen_id',
         'firstName' => 'first_name',
         'lastName' => 'last_name',
         'email' => 'email',
@@ -94,6 +95,7 @@ class Customers_model extends EA_Model {
         }
 
         // Make sure all required fields are provided.
+        $require_citizen_id = filter_var(setting('require_citizen_id'), FILTER_VALIDATE_BOOLEAN);
         $require_first_name = filter_var(setting('require_phone_number'), FILTER_VALIDATE_BOOLEAN);
         $require_last_name = filter_var(setting('require_last'), FILTER_VALIDATE_BOOLEAN);
         $require_email = filter_var(setting('require_email'), FILTER_VALIDATE_BOOLEAN);
@@ -103,8 +105,14 @@ class Customers_model extends EA_Model {
         $require_zip_code = filter_var(setting('require_zip_code'), FILTER_VALIDATE_BOOLEAN);
 
         if (
-            (empty($customer['first_name']) && $require_first_name)
+            (empty($customer['citizen_id']) && $require_citizen_id)
+            || (empty($customer['first_name']) && $require_first_name)
             || (empty($customer['last_name']) && $require_last_name)
+            || (empty($customer['email']) && $require_email)
+            || (empty($customer['phone_number']) && $require_phone_number)
+            || (empty($customer['address']) && $require_address)
+            || (empty($customer['city']) && $require_city)
+            || (empty($customer['zip_code']) && $require_zip_code)
             || (empty($customer['email']) && $require_email)
             || (empty($customer['phone_number']) && $require_phone_number)
             || (empty($customer['address']) && $require_address)
@@ -451,6 +459,7 @@ class Customers_model extends EA_Model {
             ->or_like('state', $keyword)
             ->or_like('zip_code', $keyword)
             ->or_like('notes', $keyword)
+            ->or_like('citizen_id', $keyword)
             ->group_end()
             ->limit($limit)
             ->offset($offset)
@@ -488,6 +497,7 @@ class Customers_model extends EA_Model {
     {
         $encoded_resource = [
             'id' => array_key_exists('id', $customer) ? (int)$customer['id'] : NULL,
+            'citizenId' => $customer['citizen_id'],
             'firstName' => $customer['first_name'],
             'lastName' => $customer['last_name'],
             'email' => $customer['email'],
@@ -514,6 +524,11 @@ class Customers_model extends EA_Model {
         if (array_key_exists('id', $customer))
         {
             $decoded_resource['id'] = $customer['id'];
+        }
+
+        if (array_key_exists('citizenId', $customer))
+        {
+            $decoded_resource['citizen_id'] = $customer['citizenId'];
         }
 
         if (array_key_exists('firstName', $customer))

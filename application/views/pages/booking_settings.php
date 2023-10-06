@@ -30,6 +30,34 @@
 
                         <div class="row mb-5 fields-row">
                             <div class="col-lg-6">
+
+                                <div class="form-group mb-5">
+                                    <label for="citizen-id" class="form-label">
+                                        <?= lang('citizen_id') ?>
+                                        <span class="text-danger">*</span>
+                                    </label>
+
+                                    <input type="text" id="citizen-id" class="form-control mb-2" readonly/>
+
+                                    <div class="d-flex">
+                                        <div class="form-check form-switch me-4">
+                                            <input class="form-check-input display-switch" type="checkbox" id="display-citizen-id"
+                                                   data-field="display_citizen_id">
+                                            <label class="form-check-label" for="display-citizen-id">
+                                                <?= lang('display') ?>
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input require-switch" type="checkbox" id="require-citizen-id"
+                                                   data-field="require_citizen_id">
+                                            <label class="form-check-label" for="require-citizen-id">
+                                                <?= lang('require') ?>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="form-group mb-5">
                                     <label for="first-name" class="form-label">
                                         <?= lang('first_name') ?>

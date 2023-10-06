@@ -32,6 +32,7 @@ class Users_model extends EA_Model {
      */
     protected array $api_resource = [
         'id' => 'id',
+        'citizenId' => 'citizen_id',
         'firstName' => 'first_name',
         'lastName' => 'last_name',
         'email' => 'email',
@@ -425,6 +426,7 @@ class Users_model extends EA_Model {
             ->or_like('state', $keyword)
             ->or_like('zip_code', $keyword)
             ->or_like('notes', $keyword)
+            ->or_like('citizen_id', $keyword)
             ->group_end()
             ->limit($limit)
             ->offset($offset)

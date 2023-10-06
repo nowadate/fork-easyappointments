@@ -95,6 +95,7 @@ class Booking extends EA_Controller {
 
             $this->providers_model->only($available_provider, [
                 'id',
+                'citizen_id',
                 'first_name',
                 'last_name',
                 'services',
@@ -105,6 +106,8 @@ class Booking extends EA_Controller {
         $date_format = setting('date_format');
         $time_format = setting('time_format');
         $first_weekday = setting('first_weekday');
+        $display_citizen_id = setting('display_citizen_id');
+        $require_citizen_id = setting('require_citizen_id');
         $display_first_name = setting('display_first_name');
         $require_first_name = setting('require_first_name');
         $display_last_name = setting('display_last_name');
@@ -239,6 +242,8 @@ class Booking extends EA_Controller {
             'date_format' => $date_format,
             'time_format' => $time_format,
             'first_weekday' => $first_weekday,
+            'display_citizen_id' => $display_citizen_id,
+            'require_citizen_id' => $require_citizen_id,
             'display_first_name' => $display_first_name,
             'require_first_name' => $require_first_name,
             'display_last_name' => $display_last_name,
@@ -518,6 +523,7 @@ class Booking extends EA_Controller {
 
             $this->customers_model->only($customer, [
                 'id',
+                'citizen_di',
                 'first_name',
                 'last_name',
                 'email',
