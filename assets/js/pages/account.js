@@ -16,6 +16,7 @@
  */
 App.Pages.Account = (function () {
     const $userId = $('#user-id');
+    const $citizen_id = $('#citizen-id');
     const $firstName = $('#first-name');
     const $lastName = $('#last-name');
     const $email = $('#email');
@@ -97,6 +98,7 @@ App.Pages.Account = (function () {
      */
     function deserialize(account) {
         $userId.val(account.id);
+        $citizen_id.val(account.citizen_id);
         $firstName.val(account.first_name);
         $lastName.val(account.last_name);
         $email.val(account.email);
@@ -124,6 +126,7 @@ App.Pages.Account = (function () {
     function serialize() {
         return {
             id: $userId.val(),
+            citizen_id: $citizen_id.val(),
             first_name: $firstName.val(),
             last_name: $lastName.val(),
             email: $email.val(),

@@ -17,6 +17,7 @@
 App.Pages.Providers = (function () {
     const $providers = $('#providers');
     const $id = $('#id');
+    const $citizenId = $('#citizen-id');
     const $firstName = $('#first-name');
     const $lastName = $('#last-name');
     const $email = $('#email');
@@ -155,6 +156,7 @@ App.Pages.Providers = (function () {
          */
         $providers.on('click', '#save-provider', () => {
             const provider = {
+                citizen_id: $citizenId.val(),
                 first_name: $firstName.val(),
                 last_name: $lastName.val(),
                 email: $email.val(),
@@ -371,6 +373,7 @@ App.Pages.Providers = (function () {
      */
     function display(provider) {
         $id.val(provider.id);
+        $citizenId.val(provider.citizen_id);
         $firstName.val(provider.first_name);
         $lastName.val(provider.last_name);
         $email.val(provider.email);

@@ -94,6 +94,7 @@ class Appointments extends EA_Controller {
             $appointment = json_decode(request('appointment'), TRUE);
 
             $this->appointments_model->only($appointment, [
+                'citizen_id', 
                 'start_datetime', 
                 'end_datetime', 
                 'location', 
@@ -138,6 +139,7 @@ class Appointments extends EA_Controller {
 
             $this->appointments_model->only($appointment, [
                 'id',
+                'citizen_id',
                 'start_datetime',
                 'end_datetime',
                 'location',

@@ -216,6 +216,7 @@ App.Utils.CalendarTableView = (function () {
 
                 const customer = appointment.customer;
                 $appointmentsModal.find('#customer-id').val(appointment.id_users_customer);
+                $appointmentsModal.find('#citizen-id').val(customer.citizen_id);
                 $appointmentsModal.find('#first-name').val(customer.first_name);
                 $appointmentsModal.find('#last-name').val(customer.last_name);
                 $appointmentsModal.find('#email').val(customer.email);

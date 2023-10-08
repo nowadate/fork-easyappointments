@@ -523,7 +523,7 @@ class Booking extends EA_Controller {
 
             $this->customers_model->only($customer, [
                 'id',
-                'citizen_di',
+                'citizen_id',
                 'first_name',
                 'last_name',
                 'email',

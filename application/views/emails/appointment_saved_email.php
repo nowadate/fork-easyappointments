@@ -124,6 +124,14 @@
         <table id="customer-details">
             <tr>
                 <td class="label" style="padding: 3px;font-weight: bold;">
+                    <?= lang('citizen_id') ?>
+                </td>
+                <td style="padding: 3px;">
+                    <?= e($customer['citizen_id']) ?>
+                </td>
+            </tr>
+            <tr>
+                <td class="label" style="padding: 3px;font-weight: bold;">
                     <?= lang('name') ?>
                 </td>
                 <td style="padding: 3px;">

@@ -22,6 +22,7 @@ App.Components.AppointmentsModal = (function () {
     const $endDatetime = $('#end-datetime');
     const $filterExistingCustomers = $('#filter-existing-customers');
     const $customerId = $('#customer-id');
+    const $citizenId = $('#citizen-id');
     const $firstName = $('#first-name');
     const $lastName = $('#last-name');
     const $email = $('#email');
@@ -101,6 +102,7 @@ App.Components.AppointmentsModal = (function () {
             }
 
             const customer = {
+                citizen_id: $citizenId.val(),
                 first_name: $firstName.val(),
                 last_name: $lastName.val(),
                 email: $email.val(),
@@ -239,6 +241,7 @@ App.Components.AppointmentsModal = (function () {
 
             if (customer) {
                 $customerId.val(customer.id);
+                $citizenId.val(customer.$citizen_id);
                 $firstName.val(customer.first_name);
                 $lastName.val(customer.last_name);
                 $email.val(customer.email);
@@ -385,6 +388,7 @@ App.Components.AppointmentsModal = (function () {
          */
         $newCustomer.on('click', () => {
             $customerId.val('');
+            $citizenId.val('');
             $firstName.val('');
             $lastName.val('');
             $email.val('');

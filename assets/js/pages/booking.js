@@ -22,6 +22,7 @@ App.Pages.Booking = (function () {
     const $selectService = $('#select-service');
     const $selectProvider = $('#select-provider');
     const $selectTimezone = $('#select-timezone');
+    const $citizenId = $('#citizen-id');
     const $firstName = $('#first-name');
     const $lastName = $('#last-name');
     const $email = $('#email');
@@ -191,6 +192,7 @@ App.Pages.Booking = (function () {
                 }).fadeIn();
             }
 
+            prefillFromQueryParam('#citizen-id', 'citizen_id');
             prefillFromQueryParam('#first-name', 'first_name');
             prefillFromQueryParam('#last-name', 'last_name');
             prefillFromQueryParam('#email', 'email');
@@ -647,6 +649,7 @@ App.Pages.Booking = (function () {
         }).appendTo('#appointment-details');
 
         // Customer Details
+        const citizenId = App.Utils.String.escapeHtml($citizenId.val());
         const firstName = App.Utils.String.escapeHtml($firstName.val());
         const lastName = App.Utils.String.escapeHtml($lastName.val());
         const fullName = firstName + ' ' + lastName;
@@ -665,6 +668,10 @@ App.Pages.Booking = (function () {
                 }),
                 $('<p/>', {
                     'html': [
+                        citizenId ? $('<span/>', {
+                            'text': lang('citizen_id') + ': ' + citizenId
+                        }) : null,
+                        citizenId ? $('<br/>') : null,
                         fullName ? $('<span/>', {
                             'text': lang('customer') + ': ' + fullName
                         }) : null,
@@ -698,6 +705,7 @@ App.Pages.Booking = (function () {
         const data = {};
 
         data.customer = {
+            citizen_id: $citizenId.val(),
             last_name: $lastName.val(),
             first_name: $firstName.val(),
             email: $email.val(),
@@ -785,6 +793,7 @@ App.Pages.Booking = (function () {
             App.Http.Booking.getAvailableHours(startMoment.format('YYYY-MM-DD'));
 
             // Apply Customer's Data
+            $citizenId.val(customer.citizen_id);
             $lastName.val(customer.last_name);
             $firstName.val(customer.first_name);
             $email.val(customer.email);

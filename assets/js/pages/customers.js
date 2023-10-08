@@ -18,6 +18,7 @@ App.Pages.Customers = (function () {
     const $customers = $('#customers');
     const $filterCustomers = $('#filter-customers');
     const $id = $('#customer-id');
+    const $citizenId = $('#citizen-id');
     const $firstName = $('#first-name');
     const $lastName = $('#last-name');
     const $email = $('#email');
@@ -115,6 +116,7 @@ App.Pages.Customers = (function () {
          */
         $customers.on('click', '#save-customer', () => {
             const customer = {
+                citizen_id: $citizenId.val(),
                 first_name: $firstName.val(),
                 last_name: $lastName.val(),
                 email: $email.val(),
@@ -266,6 +268,7 @@ App.Pages.Customers = (function () {
      */
     function display(customer) {
         $id.val(customer.id);
+        $citizenId.val(customer.citizen_id);
         $firstName.val(customer.first_name);
         $lastName.val(customer.last_name);
         $email.val(customer.email);

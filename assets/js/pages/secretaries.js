@@ -17,6 +17,7 @@
 App.Pages.Secretaries = (function () {
     const $secretaries = $('#secretaries');
     const $id = $('#id');
+    const $citizenId = $('#citizen-id');
     const $firstName = $('#first-name');
     const $lastName = $('#last-name');
     const $email = $('#email');
@@ -178,6 +179,7 @@ App.Pages.Secretaries = (function () {
          */
         $secretaries.on('click', '#save-secretary', () => {
             const secretary = {
+                citizen_id: $citizenId.val(),
                 first_name: $firstName.val(),
                 last_name: $lastName.val(),
                 email: $email.val(),
@@ -363,6 +365,7 @@ App.Pages.Secretaries = (function () {
      */
     function display(secretary) {
         $id.val(secretary.id);
+        $citizenId.val(citizen_id.first_name);
         $firstName.val(secretary.first_name);
         $lastName.val(secretary.last_name);
         $email.val(secretary.email);

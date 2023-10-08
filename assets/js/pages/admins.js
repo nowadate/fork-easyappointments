@@ -17,6 +17,7 @@
 App.Pages.Admins = (function () {
     const $admins = $('#admins');
     const $id = $('#id');
+    const $citizenId = $('#citizen-id');
     const $firstName = $('#first-name');
     const $lastName = $('#last-name');
     const $email = $('#email');
@@ -174,6 +175,7 @@ App.Pages.Admins = (function () {
          */
         $admins.on('click', '#save-admin', () => {
             const admin = {
+                citizen_id: $citizenId.val(),
                 first_name: $firstName.val(),
                 last_name: $lastName.val(),
                 email: $email.val(),
@@ -352,6 +354,7 @@ App.Pages.Admins = (function () {
      */
     function display(admin) {
         $id.val(admin.id);
+        $citizenId.val(admin.citizen_id);
         $firstName.val(admin.first_name);
         $lastName.val(admin.last_name);
         $email.val(admin.email);
