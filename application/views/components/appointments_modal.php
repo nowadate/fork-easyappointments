@@ -5,6 +5,7 @@
  * @var array $available_services
  * @var array $appointment_status_options
  * @var array $timezones
+ * @var array $require_citizen_id
  * @var array $require_first_name
  * @var array $require_last_name
  * @var array $require_email
@@ -13,6 +14,7 @@
  * @var array $require_city
  * @var array $require_zip_code
  */
+
 ?>
 <div id="appointments-modal" class="modal fade">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
@@ -222,6 +224,18 @@
 
                         <div class="row">
                             <div class="col-12 col-sm-6">
+                                <div class="mb-3">
+                                    <label for="citizen-id" class="form-label">
+                                        <?= lang('citizen_id') ?>
+                                        <?php if ($require_citizen_id): ?>
+                                            <span class="text-danger">*</span>
+                                        <?php endif ?>
+                                    </label>
+                                    <input type="text" id="citizen-id"
+                                           class="<?= $require_citizen_id ? 'required' : '' ?> form-control"
+                                           maxlength="100"/>
+                                </div>
+
                                 <div class="mb-3">
                                     <label for="first-name" class="form-label">
                                         <?= lang('first_name') ?>

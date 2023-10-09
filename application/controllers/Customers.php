@@ -65,6 +65,7 @@ class Customers extends EA_Controller {
 
         $date_format = setting('date_format');
         $time_format = setting('time_format');
+        $require_citizen_id = setting('require_citizen_id');
         $require_first_name = setting('require_first_name');
         $require_last_name = setting('require_last_name');
         $require_email = setting('require_email');
@@ -98,6 +99,7 @@ class Customers extends EA_Controller {
             'timezones' => $this->timezones->to_array(),
             'grouped_timezones' => $this->timezones->to_grouped_array(),
             'privileges' => $this->roles_model->get_permissions_by_slug($role_slug),
+            'require_citizen_id' => $require_citizen_id,
             'require_first_name' => $require_first_name,
             'require_last_name' => $require_last_name,
             'require_email' => $require_email,

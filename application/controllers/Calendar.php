@@ -149,6 +149,7 @@ class Calendar extends EA_Controller {
             'available_services' => $available_services,
             'secretary_providers' => $secretary_providers,
             'appointment_status_options' => json_decode($appointment_status_options, TRUE) ?? [],
+            'require_citizen_id' => setting('require_citizen_id'),
             'require_first_name' => setting('require_first_name'),
             'require_last_name' => setting('require_last_name'),
             'require_email' => setting('require_email'),

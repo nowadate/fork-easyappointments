@@ -87,6 +87,7 @@
         'available_services' => vars('available_services'),
         'appointment_status_options' => vars('appointment_status_options'),
         'timezones' => vars('timezones'),
+        'require_citizen_id' => vars('require_citizen_id'),
         'require_first_name' => vars('require_first_name'),
         'require_last_name' => vars('require_last_name'),
         'require_email' => vars('require_email'),
